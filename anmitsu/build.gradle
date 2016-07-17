@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 24
@@ -30,4 +31,16 @@ dependencies {
 }
 repositories {
     mavenCentral()
+}
+
+publish {
+    groupId = 'net.kikuchy.anmitsu'
+    artifactId = 'anmitsu'
+    publishVersion = '0.0.1'
+    desc = 'Utility for arguments of Activities and Fragments by Kotlin'
+    website = 'https://github.com/kikuchy/anmitsu'
+}
+
+afterEvaluate {
+    tasks.findByPath(":anmitsu:mavenAndroidJavadocs").enabled = false
 }
